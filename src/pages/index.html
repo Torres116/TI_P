@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="../scripts/index.js"></script>
+    <link href="../css/custom.css" rel="stylesheet">
+    <script src="../scripts/TailwindConfiguration.js"></script>
+</head>
+
+<body class="bg-[#171717]  w-full flex flex-col items-center gap-28">
+    <div class="flex flex-col items-center min-h-[100vh]">
+        <img src="../assets/Cover.png" class="hidden md:flex opacity-80 lg:min-h-[100vh] object-fit min-w-[100vw]">
+
+        <div class=" w-full p-4 h-[120px] justify-between flex flex-row  px-[10%] absolute top-0">
+            <img src="../assets/Logo.png" class="h-[60px]">
+
+            <div class="hidden md:flex w-[100vw] h-[70%] md:p-10 md:flex-row gap-5 items-center justify-center font-medium text-2xl
+            font-primary text-[#FFF]">
+                <div>
+                    <button class="hover:scale-110 transition-all duration-500">Menu</button>
+                </div>
+                <div>
+                    <button class="hover:scale-110 transition-all duration-500">Fine Dining</button>
+                </div>
+                <div>
+                    <button class="hover:scale-110 transition-all duration-500">Account</button>
+                </div>
+                <div>
+                    <button class="hover:scale-110 transition-all duration-500">About</button>
+                </div>
+                <div>
+                    <button class="hover:scale-110 transition-all duration-500">Contact</button>
+                </div>
+            </div>
+
+            <button class="w-[10rem] bg-transparent h-[3rem] border-yellow-600 border-[2px] glow-gold flex items-center justify-center
+                text-lg font-primary text-[#ffd700] font-bold p-4 hover:scale-105 transition-all duration-500">
+                RESERVATION
+                <style> 
+                    .glow-gold { box-shadow: 0 0 10px #ffd700;}
+                </style>
+            </button>
+
+        </div>
+
+        <div class="text-4xl md:text-6xl absolute top-[18%] w-[90%] h-auto flex items-center justify-center flex-col p-2 ">
+
+            <h1 class="font-secondary text-[#FFF] font-medium italic tracking-wide">Best sushi in town</h1>
+
+            <h1 class="w-auto font-tertiary text-[#F3D382] font-medium  italic tracking-wide text-center p-10">
+                TASTE THE BEST <br> QUALITY FLAVOR OF OUR SUSHI </h1>
+
+            <h2 class="font-dm text-[#FFF] text-sm md:text-[1.2rem] w-[100%] font-thin tracking-wide text-center">
+                We only use the five star quality for our menu, come and get the tastiness in every food we serve.
+            </h2>
+
+            <button class="w-[8em] h-[60px] my-16 bg-[#F5BE32] text-3xl font-bold font-primary flex items-center justify-center glow-gold 
+                hover:scale-110 transition-all duration-500">
+               MENUS
+                <style> 
+                    .glow-gold { box-shadow: 0 0 10px #ffd700;}
+                </style>
+            </button>
+            
+        </div>
+
+        
+    </div>
+
+    <div class="w-full flex flex-col gap-20 items-center justify-center text-center">
+
+        <div class="w-[90%] h-auto flex flex-col gap-5 items-center">
+
+            <div class="h-[30%] flex flex-col gap-5">
+                <h2 class="font-secondary text-[#FFF] text-3xl font-medium italic tracking-wide">
+                    Our Special Menu
+                </h2>
+
+                <h1 class="font-dm text-[#F3D382] font-bold text-3xl md:text-5xl">
+                    Today`s Special
+                </h1>
+                
+                <h2 class=" font-dm text-[#FFF] md:text-3xl font-bold ">
+                    Special menu often comes different everyday, this is our special food for today
+                </h2>
+            </div>
+
+            <!-- Items Card -->
+            <div class="w-[100%] md:w-[70%] h-[70%] flex flex-col md:flex-row gap-4 justify-center" id="Cards_Container">
+               
+            </div>
+
+            <!-- Divisor imagem -->
+        </div>
+
+        <img src="../assets/Divisor.png" class=" w-[100vw]">
+
+        <div  class="w-[90%] h-auto flex flex-col gap-5 items-center">
+
+            <div class="h-[30%] flex flex-col gap-5">
+                <h2 class="font-secondary text-[#FFF] text-3xl font-medium italic tracking-wide">
+                    Quality food for you
+                </h2>
+
+                <h1 class="font-dm text-[#F3D382] font-bold text-3xl md:text-5xl">
+                    Our Categories
+                </h1>
+                
+                <h2 class=" font-dm text-[#FFF] md:text-3xl font-bold ">
+                    Authentic food from our restaurant served with high quality ingredients
+                </h2>
+            </div>
+
+        </div>
+    </div>
+
+    
+</body>
+</html>
