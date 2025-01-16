@@ -5,7 +5,7 @@ tailwind.config = {
             dm: ['DM Serif Display','serif'], 
             primary: ['Cormorant SC', 'serif'], 
             secondary: ['Great Vibes', 'serif'], 
-            tertiary: ['Cinzel', 'serif'], 
+            tertiary: ['Figtree', 'serif'], 
         },
         },
     },

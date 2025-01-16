@@ -1,49 +1,77 @@
+import { renderCategorieCardProduct , RenderProductCard} from "../scripts/Cards.js";
+import { GetProducts as  GetProducts_Db} from "../scripts/Db.js";
 
-const endpoint = "http://localhost/TI_Proj/GetProducts.php";
+const categories = ['Appetizers',"Sushi & Sashimi","Main Courses","Grill & BBQ",'Desserts','Drinks'];
+let categoryShowcaseIndex = 1;
+let products = [];
 
-async function GetProducts () {
-    let products = [];
-    try {
-        const response = await fetch(endpoint);
-        products = await response.json();
-    } catch (error) {
-        console.log("error-> " + error);
-    }
 
-    return products;
+function RenderCategoriesShowcase() {
+    const categoriesCardsContainer = document.getElementById('CatCard_Container');
+    categoriesCardsContainer.innerHTML = ''; //Limpa os anteriores
+    const filterProducts = products.filter(e => e.CATEGORY_ID.includes(categoryShowcaseIndex));
+    filterProducts.forEach((product,index) => {
+        const div = renderCategorieCardProduct(product,index);
+        categoriesCardsContainer.appendChild(div);
+    });
 }
+
+async function LoadCategories() {
+    const categoriesContainer = document.getElementById('CatButtons_Container');
+    categoriesContainer.innerHTML = '';
+    categories.forEach((category, index) => {
+        const button = document.createElement('button');
+        button.className = 
+        `w-[12rem] h-[50px] ${categoryShowcaseIndex - 1 === index ? 'bg-[#F5BE32] text-black' : 'bg-transparent'} border-white border-[2px] p-2 text-center ` + 
+        "cursor-pointer hover:scale-105 transition-all duration-300 ";
+        button.id = `category-${index}`;
+        button.innerText = category;
+        button.addEventListener('click',()=> {
+            categoryShowcaseIndex = index + 1;
+            LoadCategories();
+        });
+        // Evento click
+        categoriesContainer.appendChild(button);
+    });
+    RenderCategoriesShowcase();
+};
 
 function LoadContent(products) {
     const cardContainer = document.getElementById("Cards_Container");
     products.forEach(product => {
-       
-
-        const div = document.createElement('div');
-        div.className = "h-auto w-auto md:w-[30%] bg-[#2E2E2E] flex flex-col flex-wrap";
-
-        div.innerHTML = 
-        `
-                <img src="https://img.pikbest.com/origin/09/13/98/01HpIkbEsTUqr.jpg!w700wp" class="h-[45%]">
-                    <div class=" h-[55%] flex gap-5 p-6 flex-col ">
-                        <h1 class="text-2xl text-[#F3D382] font-bold font-tertiary">${product.NOME}</h1>
-                        <h2 class="text-sm md:text-lg h-[80px]  text-white  text-start">
-                            ${product.DESCRICAO}</h2>
-                        <button class="w-[10rem] bg-transparent  h-[3rem] border-yellow-600 border-[2px] glow-gold flex items-center justify-center
-                            text-xl font-primary text-[#ffd700] font-bold p-4 hover:scale-105 transition-all duration-500">
-                            Order Now
-                            <style> 
-                                .glow-gold { box-shadow: 0 0 10px #ffd700;}
-                            </style>
-                        </button>
-                    </div>
-        `;
+        const div = RenderProductCard(product);
         cardContainer.appendChild(div);
-    })
-}
+    });
+
+    LoadCategories();
+};
 
 async function Init() {
-    const products = await GetProducts();
+    products = await GetProducts_Db();
     LoadContent(products.slice(0,3));
+    CheckUserSession();
 }
 
 window.addEventListener('load', Init);
+
+
+function CheckUserSession(){
+    $(document).ready(function(){
+        $.ajax({
+            url: "http://localhost/Projeto/src/scripts/checkSession.php",
+            method: 'GET',
+            dataType: 'json',
+            sucess: function (res){
+                if(res.logged_in) {
+                    console.log("logged");
+                } else {
+                    console.log("not logged");
+                }
+            },
+
+            error: function(ee) {
+                console.log(ee);
+            }
+        });
+    });
+}
